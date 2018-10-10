@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Train Schedule</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+    <script src="https://unpkg.com/imask"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
+</head>
+<body>
+        <div class="container-fluid">
+                <div class="jumbotron text-center">
+                    <!-- <i class="fa fa-5x fa-train"></i> -->
+                    <h1>Friendly Transit</h1>
+                    <h3>Train Scheduler</h3>
+                    <h5>Today is <span id="current-status"></span></h5>
+                </div>
+            </div>
+        
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <!-- <div class="container"> -->
+                    <div class="panel-group">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">Add Train</div>
+                            <form>
+                                <div class="container-fluid">
+                                    <div class="form-group">
+                                        <label for="train-name">Train name</label>
+                                        <input type="text" class="form-control" id="train-name" placeholder="Red line">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="destination">Destination</label>
+                                        <input type="text" class="form-control" id="destination" placeholder="Broadway">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="train-time">First train time (HH:mm, AM/PM)</label>
+                                        <input type="time" class="form-control" id="train-time" placeholder="16:45">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="frequency">
+                                        Frequency (mins)</label>
+                                        <input type="text" class="form-control" id="frequency" placeholder="15">
+                                    </div>
+                                    <button class="btn btn-primary" id="add-train" type="submit">Submit</button>
+                                    <br><br>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- </div> -->
+                </div>
+        
+                <div class="col-md-9">
+                    <div class="container-fluid">
+                        <!-- <div class="panel-group"> -->
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">Current Train Schedule (25 latest entries)
+                                <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-refresh"></span> Refresh</button></div> 
+                                    <div class="panel-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th><strong>Train name</strong></th>
+                                                        <th><strong>Destination</strong></th>
+                                                        <th><strong>Frequency (min)</strong></th>
+                                                        <th><strong>Next arrival</strong></th>
+                                                        <th><strong>Minutes away</strong></th>
+                                                        <!-- <th><strong>Update</strong></th> -->
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="new-train">
+                                                    <!-- <tr> -->
+                                                    <!-- <td>i.e. Red line</td>
+                                                    <td>Broadway</td>
+                                                    <td>15</td>
+                                                    <td>16:45</td>
+                                                    <td>12</td>
+                                                </tr> -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        
+            
+        
+            
+        
+            <script src="assets/app.js"></script>
+        </body>
+        </html>
+        
+ 
+    
+</body>
+</html>
